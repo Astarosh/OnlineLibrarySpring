@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <div th:fragment="bookEdit">
+            <h3 th:text="#{edit_book}"></h3>
+            <form th:action="@{/upload}" enctype="multipart/form-data" class="form-horizontal text-center editForm" th:object="${bookExtension}" method="POST">
+                <div class="form-group">
+                    <label class="control-label col-sm-4" for="email" th:text="#{book_name}">Book name </label>
+                    <div class="col-sm-7">
+                        <input th:field="*{book.name}" type="text" class="form-control" id="email" th:placeholder="*{book.name}" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-4" for="pwd" th:text="#{author_name}">Author name: </label>
+                    <div class="col-sm-7"> 
+                        <input th:field="*{book.author.fio}" type="text" class="form-control" id="pwd" th:placeholder="*{book.author.fio}" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-4" for="pwd" th:text="#{genre}">Genre: </label>
+                    <div class="col-sm-7"> 
+                        <input th:field="*{book.genre.name}" type="text" class="form-control" id="pwd" th:placeholder="*{book.genre.name}" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-4" for="pwd" th:text="#{book_publisher}">Publisher: </label>
+                    <div class="col-sm-7"> 
+                        <input th:field="*{book.publisher.name}" type="text" class="form-control" id="pwd" th:placeholder="*{book.publisher.name}" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-4" for="pwd" th:text="#{book_page_count}">Page count: </label>
+                    <div class="col-sm-7"> 
+                        <input th:field="*{book.pageCount}" type="text" class="form-control" id="pwd" th:placeholder="*{book.pageCount}" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-4" for="pwd">ISBN: </label>
+                    <div class="col-sm-7"> 
+                        <input th:field="*{book.isbn}" type="text" class="form-control" id="pwd" th:placeholder="*{book.isbn}" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-4" for="pwd" th:text="#{book_published_year}">PublishYear: </label>
+                    <div class="col-sm-7"> 
+                        <input th:field="*{book.publishYear}" type="number" class="form-control" id="pwd" th:placeholder="*{book.publishYear}" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-4" for="pwd">
+                        <img width="100%" class="thumbnail" th:src="@{'data:image/jpg;base64,' + *{T(org.springframework.util.Base64Utils).encodeToString(book.image)}}" />
+                    </label>
+                    <div class="col-sm-7"> 
+                        <div class="panel panel-default">
+                            <div class="panel-heading" th:text="#{upload_file}"><strong>Upload file</strong> <small> </small></div>
+                            <div class="panel-body">
+                                <div class="input-group image-preview">
+                                    <input placeholder="" type="text" class="form-control image-preview-filename" disabled="disabled" />
+                                    <!-- don't give a name === doesn't send on POST/GET --> 
+                                    <span class="input-group-btn" th:inline="text"> 
+                                        <!-- image-preview-clear button -->
+                                        <button type="button" class="btn btn-default image-preview-clear" style="display:none;"><i class="fa fa-times" aria-hidden="true"></i></button>
+                                        <!-- image-preview-input -->
+                                        <div class="btn btn-default image-preview-input"> <i class="fa fa-folder-open" aria-hidden="true"></i><span class="image-preview-input-title">[[#{select_file}]]</span>
+                                            <input th:field="*{file}" type="file" name="file" />
+                                            <!-- rename it --> 
+                                        </div>
+                                    </span> 
+                                </div>
+                                <!-- /input-group image-preview [TO HERE]--> 
+
+                                <br />
+
+                                <!-- Drop Zone -->
+                                <div class="upload-drop-zone" id="drop-zone">
+                                    Or drag and drop files here 
+                                </div>
+                                <input type="submit" class="btn btn-success" th:value="#{save}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        
+        </div>
+    </body>
+</html>

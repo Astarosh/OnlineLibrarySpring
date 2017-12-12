@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body th:fragment="navbar">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <h:form>
+                        <a th:href="@{/}" class="navbar-brand">
+                            OnLib <i class="fa fa-book" aria-hidden="true">   </i>
+                        </a>
+                    </h:form>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav" th:inline="text">
+                        <li class="active">                                
+                            <form>
+                                <a href="#" class="navbar-brand top10viewd">
+                                    [[#{top_10_viewd}]] <i class="fa fa-eye" aria-hidden="true"> </i>
+                                </a>
+                            </form>
+                        </li>
+                        <li>                               
+                            <form>
+                                <a href ="#" class="navbar-brand lastViewed">
+                                    [[#{top_10_lastViewed}]]  <i class="fa fa-free-code-camp" aria-hidden="true"></i>
+                                </a>
+                            </form>
+                        </li>
+                        <li>                               
+                            <form>
+                                <a href="#" class="navbar-brand recentlyAdded">
+                                    [[#{top_10_recentlyAdded}]] <i class="fa fa-thermometer-full" aria-hidden="true"></i> 
+                                </a>
+                            </form>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right" th:inline="text">
+                        <li>
+                            <form>
+                                <a href="#" class="navbar-brand welcomTitle">
+                                    [[#{welcom}]], [[${user.username}]]
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                </a>
+                            </form>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">[[#{language}]] <i class="fa fa-globe" aria-hidden="true"></i>    <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li th:replace="/fragments/locales :: locales">
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown formDropdown" th:inline="text">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-sign-in" aria-hidden="true"></i>    [[#{loginIn}]]   <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>                               
+                                    <form id="login_form" onkeypress="if (event.keyCode === 13) {
+                                                document.getElementById('login_form:loginSubmitButton').click();
+                                                return false;
+                                            }">
+                                        <div class="input-group">
+                                            <label for="username">[[#{input_name}]] [[#{or_word}]] Email:</label>
+                                            <input type="text" class="form-control" id="username" />
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="password">[[#{password}]]:</label>
+                                            <input type="password" class="form-control" id="password" />
+                                        </div>
+                                        <div class="input-group">
+                                            <button class="btn btn-primary"> [[#{loginIn}]]
+                                            </button>
+                                        </div>
+                                    </form>
+                                </li>
+                                <li>                                        
+                                    <form id="logoutForm">
+                                        <a href="#" class="">
+                                            [[#{exit}]]
+                                        </a>
+                                    </form>
+                                </li>
+                                <li role="separator" class="divider"></li>
+                                <li>                        
+                                    <form>
+                                        <a href="#">
+                                            [[#{registration}]]
+                                        </a>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    </body>
+</html>

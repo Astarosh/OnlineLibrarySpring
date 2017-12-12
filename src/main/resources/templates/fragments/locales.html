@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body th:fragment="locales">
+        <form>
+            <a th:href="@{/en}" name="en">
+                <img th:src="@{/images/eng.png}" class="img-thumbnail"/>
+            </a>
+            <a th:href="@{/ru}" name="ru">
+                <img th:src="@{/images/rus.png}" class="img-thumbnail"/>
+            </a>
+        </form>
+    </body>
+</html>

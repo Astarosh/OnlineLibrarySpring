@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <div th:fragment="leftmenu">
+            <h4 th:inline="text">[[#{genres}]]:</h4>
+
+            <div class="genres" id="genresForm">
+                <a th:href="@{/genre/{genreId}(genreId=-1)}" id="allBooksLink" class="" th:text="#{all_books}"></a>
+                <a th:each="genre : ${genreList}" th:href="@{/genre/{genreId}(genreId=${genre.id})}" th:text="${genre.name}" class=""></a>
+            </div>
+        </div>
+    </body>
+</html>

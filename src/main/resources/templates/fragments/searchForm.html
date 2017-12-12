@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <div th:fragment="searchForm">  
+            <div th:inline="text">
+                <h1>[[#{welcome_title}]]</h1>
+            </div>
+            <div class="search_div">
+                <form method="POST" action="#" th:action="@{/showBooks}" class="search_form" id="searchForm" th:object="${bookExtension}">
+                    <input th:field="*{searchString}" th:placeholder="#{search_input_placeholder}" id="search_string" class="search_string" />
+                    <input type="submit" th:value="#{search_button}" class="search_string_button" />
+                    <select id="selectGenre" th:field="*{searchType.searchType}" class="selectTypeMenu">
+                        <option th:value="${searchType.searchType}" th:each="searchType : ${searchTypesList}" th:text="${searchType.searchField}"></option>
+                    </select>
+                </form>
+            </div>
+            <div class="letters">
+                <a th:each="letter : ${letterList}" th:href="@{/letter/{letterStr}(letterStr=${letter.letterStr})}" th:text="${letter.letterStr}" class=""></a>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<h1>Spring Boot - Upload Status</h1>
+
+<div th:if="${message}">
+    <h2 th:text="${message}"/>
+</div>
+<div th:each="book : ${bookList}">
+    <p th:text="${book.name}"></p>
+</div>
+<p th:text="${books.name}"></p>
+<div>
+    <p th:text="${booksPerPage}"></p>
+</div>
+<div>
+    <p th:text="${pageNumber}"></p>
+</div>
+<div>
+    <p th:text="${listLength}"></p>
+</div>
+
+</body>
+</html>
